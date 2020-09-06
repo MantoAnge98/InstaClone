@@ -1,0 +1,13 @@
+<h4>Confirm Page</h4>
+
+<%= form_with(model: @blog, url: blogs_path, local: true) do |form| %> 
+<%= form.hidden_field :content%>
+<p>Content:<%= @blog.content%></p> 
+<%= form.hidden_field :image_cache%>
+<p>Image:<%= @blog.image%></p> 
+<%= form.submit "Submit", class: "btn btn-secondary"%> 
+<%= form.submit "Back", name: 'back', class: "btn btn-secondary"%>
+<% end %>
+
+
+<%= link_to "Retour à la liste des Blogs", blogs_path, class: "btn btn-primary" %>

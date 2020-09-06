@@ -1,0 +1,18 @@
+<%= form_with(model: @blog, local: true) do |form| %>
+<% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <h4><%= @blog.errors.count%>Errors.</h4> 
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %> 
+  </div>
+<% end %>   
+
+  <%= form.label :content %>
+  <%= form.text_field :content, class: "form-control" %> 
+  <%= form.label :image %>
+  <%= form.file_field :image, class: "form-control" %>
+  <%= form.hidden_field :image_cache%> 
+<%= form.submit "Update Post", class: "btn btn-secondary" %>
+<% end %>
+<%= link_to "Retour à la liste des Blogs", blogs_path %>

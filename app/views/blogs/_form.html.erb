@@ -1,0 +1,16 @@
+<h4>Enter Information</h4>
+<%= form_with(model: @blog, local: true ,url: confirm_blogs_path) do |form| %>
+  <% if @blog.errors.any? %>
+      <div class="alert alert-danger" role="alert">Please this field must not be empty / Do not also exceed 140 caracters. </div>
+  <% end %>
+  
+  <%= form.label :content%>
+  <%= form.text_field :content, class: "form-control" %> 
+  <%= form.label :image %>
+  <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+  <%= form.file_field :image, class: "form-control" %>
+  <%= form.hidden_field :image_cache%> 
+  <%= form.submit "Create Blog", class: "btn btn-success" %>
+<% end %>
+
+ <%= link_to "Retour à la liste des Blogs", blogs_path, class: "btn btn-secondary" %> 

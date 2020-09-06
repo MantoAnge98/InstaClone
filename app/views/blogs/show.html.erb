@@ -1,0 +1,48 @@
+<h3>Blog Details</h3>
+
+<table class="table" style="overflow:hidden;">
+    <tr>
+        <th style="width:300px">Content</th>
+        <th style="width:400px">Image</th>
+    </tr>
+    <tr>
+        <td style="width:300px;word-break: break-word;">
+            <%=@blog.content%>
+        </td>
+        <td style="width:200px">
+            <div class="insta-post">
+                <%=image_tag(@blog.image.url alt:'Image') if @blog.image?%>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="row">
+    <div class="col-12">
+        <span class="label label-primary">
+         <% if current_user && current_user == @blog.user%>  
+            <%= link_to 'Edit', edit_blog_path(@blog), class: "btn btn-secondary"%> 
+          <%else%>
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+              </span>
+              You may not modify  the content. 
+            </div>
+          <% end %>
+        </span>
+    </div>
+</div> 
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-6">
+    <%= link_to "Blog Lists", blogs_path, class: "btn btn-secondary"%> 
+  </div> 
+  <div class="col-6" style="margin-bottom: 60px;">
+    <% unless @blog.user_id == current_user.id %>
+      <% if @favorite.present? %>
+        <%= link_to 'Delete Favorite', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger', notice: "Favorite Deleted" %>
+      <% else %>
+        <%= link_to 'Add Favorite', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-secondary', notice: "Favorite Added" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

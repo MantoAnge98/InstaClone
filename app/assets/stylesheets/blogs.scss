@@ -1,3 +1,59 @@
-// Place all the styles related to the blogs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  background-color: #fafafa!important;
+}
+
+.header{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#top{
+  margin-bottom: 100px;
+}
+
+.insta-post{
+  margin-top: 15px;
+}
+
+.post-meta {
+  background: #fff;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.account-summary{
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.follower-suggestions{
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.comment-post{    
+  background: #fff;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.blog-pic{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.blog-pic img{
+  width: auto;
+  height: 100%;
+  margin-left: -50px;
+}

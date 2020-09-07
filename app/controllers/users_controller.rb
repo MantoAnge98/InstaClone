@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   def index
-    @user = User.all
+     @user = User.all
   end
 
   def new 
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
           #redirect_to user_path(@user.id) 
           redirect_to new_session_path, notice: "Account create, please log In"
       else
+        flash[:danger]="something is wrong !"
           render :new
       end
     end
@@ -36,7 +37,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(current_user.id), notice: "Your profile is update"
     else
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   
   private
   def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache,)
+     @user=params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache,)
   end
   
   def set_user

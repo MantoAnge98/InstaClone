@@ -2,7 +2,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :file
   version :thumb do
-    process resize_to_fill: [350, 350]
+    process resize_to_fill: [150, 150]
   end
   
   def store_dir

@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'Connexion failure, Please try again or Sign up'
       render :new
     end
-
   end
 
   #Instance pour détruire une session 'utilisateur'

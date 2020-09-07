@@ -12,6 +12,9 @@ Rails.application.configure do
 
   config.assets.js_compressor = :uglifier
   
+  # Route exceptions to the application router vs. default
+  config.exceptions_app = self.routes
+
   config.assets.compile = false
 
   config.active_storage.service = :local

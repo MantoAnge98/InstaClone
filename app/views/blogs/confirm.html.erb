@@ -1,13 +1,14 @@
 <h4>Confirm Page</h4>
 
-<%= form_with(model: @blog, url: blogs_path, local: true) do |form| %> 
-<%= form.hidden_field :content%>
-<p>Content:<%= @blog.content%></p> 
-<%= form.hidden_field :image_cache%>
-<p>Image:<%= @blog.image%></p> 
-<%= form.submit "Submit", class: "btn btn-secondary"%> 
-<%= form.submit "Back", name: 'back', class: "btn btn-secondary"%>
+<%= form_with(model: @blog, url:blogs_path,local: true) do |form| %>
+  <%= form.hidden_field :content %>
+  <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url%>
+  <%= form.hidden_field :image_cache, class: "imgConfirm"%>
+  <p>Content :<%= @blog.content %> </p>
+  <%= form.submit "Confirm", class: "col-4", class: "btn btn-secondary" %>
+  <% end %>
+  <%= form_with(model:@feed, url:new_blog_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
 <% end %>
 
-
-<%= link_to "Retour à la liste des Blogs", blogs_path, class: "btn btn-primary" %>
+<%= link_to "Retour à la liste des Blogs", blogs_path, class: "btn btn-primary", style: "margin-top:20px" %>

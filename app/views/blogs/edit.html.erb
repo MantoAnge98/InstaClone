@@ -1,18 +1,15 @@
-<%= form_with(model: @blog, local: true) do |form| %>
-<% if @blog.errors.any? %>
-  <div id="error_explanation">
-    <h4><%= @blog.errors.count%>Errors.</h4> 
-      <% @blog.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %> 
+  <% if logged_in? %>
+    <% if @blog.user.id == current_user.id %>
+        <%=render 'form' %>
+    <% else %>
+    <div style="margin-top:20px">
+      <p>Your Profile : <%= link_to "Profile User", user_path(current_user.id), class: "btn btn-secondary col-4" %></p>
+      <p>Or Post List: <%= link_to "Post List", blogs_path, class: "btn btn-secondary col-4"%></p>
+    </div>
+  <% end %>
+ <% else %>
+  <div style="margin-top:20px">
+    <p>Log in : <%= link_to "Log in", new_session_path , class: "btn btn-primary col-4"%></p>
+    <p>Or Sign Up : <%= link_to "Sign Up", new_user_path, class: "btn btn-primary col-4"%></p>
   </div>
-<% end %>   
-
-  <%= form.label :content %>
-  <%= form.text_field :content, class: "form-control" %> 
-  <%= form.label :image %>
-  <%= form.file_field :image, class: "form-control" %>
-  <%= form.hidden_field :image_cache%> 
-<%= form.submit "Update Post", class: "btn btn-secondary" %>
-<% end %>
-<%= link_to "Retour à la liste des Blogs", blogs_path %>
+ <% end %>

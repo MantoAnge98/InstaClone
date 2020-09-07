@@ -1,9 +1,9 @@
 module SessionsHelper
   #Créer une méthode d'assistance pour afficher la session
     #de l'user connecté 
-    def current_user
-      #Si @current_user est faux lui attribuer ceci. 
-      @current_user ||= User.find_by(id: session[:user_id])
+  def current_user
+    #Si @current_user est faux lui attribuer ceci. 
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   
